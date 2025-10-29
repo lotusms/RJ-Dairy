@@ -1,0 +1,34 @@
+[
+  {
+    "name":"Rick Stehr, R.A.S.",
+    "image": "rick2.png",
+    "position": "Consultant",
+    "phone": "(717) 689-0472",
+    "email": "rickstehr@rjdairy.com",
+    "quote": "My passion in life is to help the family farm succeed, grow and develop to meet their goals for the betterment of all the family."
+  },					
+  {
+    "name":"Jackie Behr, P.A.S.",
+    "image": "jackie2.png",
+    "position": "Manager<br/>Consultant",
+    "phone": "(717) 203-6777",
+    "email": "jackiebehr@rjdairy.com",
+    "quote": "I enjoy researching, analyzing and problem solving to make a difference in overall farm profitability and animal health. I am also passionate about milk education and enjoy working with 97 MILK to help make a positive impact on the family-owned dairy farms."
+  },         
+  {
+    "name":"Kevin Smith, P.A.S.",
+    "image": "kevin.png",
+    "position": "Consultant",
+    "phone": "(814) 421-8810",
+    "email": "kevinsmith@rjdairy.com",
+    "quote": "There is no better feeling, than helping the men and women farmers that I've come to know, do the best they can, and make a difference for their farms and their families."
+  },        
+  {
+    "name":"Steve Snyder",
+    "image": "snyder.jpg",
+    "position": "Consultant",
+    "phone": "(570) 640-9959",
+    "email": "stevesnyder@rjdairy.com",
+    "quote": "Having worked and co-owned my family farm for over 25 years I understand first-hand the opportunities and challenges dairy farmers face."
+  }               
+]

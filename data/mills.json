@@ -1,0 +1,82 @@
+[
+  {
+    "name":"Mark Hershey Mills",
+    "image": "markhershey.png",
+    "address": "479 Horseshoe Pike.\nLebanon, PA 17042",
+    "phone": "(717) 867-4624",
+    "website": "http://www.markhersheyfarms.com",
+    "email": "n/a"
+  },
+  {
+    "name":"C.E. Sauder & Sons",
+    "image": "CESauder.png",
+    "address": "359 Weaverland Valley Rd.\nEast Earl, PA 17519",
+    "phone": "(717) 445-4822",
+    "website": "n/a",
+    "email": "cesauder@frontier.com"
+  },
+  {
+    "name":"Stevens Feed Mill, Inc",
+    "image": "stevens.jpg",
+    "address": "28 Stevens Rd. PO Box 7.\nStevens, PA 17578",
+    "phone": "(717) 336-2150",
+    "website": "n/a",
+    "email": "info@stevensfeed.com"
+  },
+  {
+    "name":"Sporting Valley Feeds",
+    "image": "Sporting-Valley.png",
+    "address": "934 Junction Rd.\nManheim, PA 17545",
+    "phone": "(717) 665-6122",
+    "website": "n/a",
+    "email": "sales@sportingvalleyfeeds.com"
+  },
+  {
+    "name":"Triple-M Farms",
+    "image": "TRIPLE-M.png",
+    "address": "1525 King St.\nLebanon, PA 17042",
+    "phone": "(717) 272-3225",
+    "website": "http://www.triplemfarms.com",
+    "email": "info@triplemfarms.com"
+  },
+  {
+    "name":"F.M. Browns",
+    "image": "browns.jpg",
+    "address": "127 S Furnace St.\nBirdsboro, PA 19508",
+    "phone": "(610) 582-2741",
+    "website": "http://www.brownsfeeds.com",
+    "email": "n/a"
+  },
+  {
+    "name":"Martins Elevator",
+    "image": "Martin-Elevators.png",
+    "address": "13219 Maugansville Rd.\nHagerstown, MD 21740",
+    "phone": "(717) 867-4624",
+    "website": "http://www.martinselevator.com",
+    "email": "n/a"
+  },
+  {
+    "name":"White Oak Mills",
+    "image": "whiteoaksmills.jpg",
+    "address": "419 W. High St.\nElizabethtown, PA 17022",
+    "phone": "(717) 367-1525",
+    "website": "http://www.whiteoakmills.com",
+    "email": "n/a"
+  },
+  {
+    "name":"Kreider Mills",
+    "image": "kreider.jpg",
+    "address": "21 Tressler Rd.\nLoysville, PA 17047",
+    "phone": "(717) 789-3535",
+    "website": "n/a",
+    "email": "kreidersmill@gmail.com"
+  },
+  {
+    "name":"Franklin Feed & Supply Co",
+    "image": "franklins.png",
+    "address": "1977 Philadelphia Ave.\nChambersburg, PA 17201",
+    "phone": "(717) 264-6148",
+    "website": "n/a",
+    "email": "franklinfeedstacy@gmail.com"
+  }
+]

@@ -1,0 +1,26 @@
+const path = require('path')
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+      },
+    ],
+  },
+  // Force webpack instead of Turbopack
+  turbopack: {},
+  // Webpack configuration
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '.'),
+    }
+    return config
+  },
+}
+
+module.exports = nextConfig

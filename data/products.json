@@ -1,0 +1,47 @@
+[
+  {
+    "name":"Custom Dairy Feed",
+    "image": "custom.png",
+    "link": "custom-dairy-feed.php"
+  },					
+  {
+    "name":"Calf Feed",
+    "image": "calf.png",
+    "link": "calf-feed.php"
+  },					
+  {
+    "name":"Heifer Feed",
+    "image": "heifer.png",
+    "link": "heifer-feed.php"
+  },					
+  {
+    "name":"Transitional Feed",
+    "image": "transition2.png",
+    "link": "transitional-feed.php"
+  },					
+  {
+    "name":"Organic Feed",
+    "image": "OrganicCircle2.png",
+    "link": "organic-feed.php"
+  },					
+  {
+    "name":"Beef Feed",
+    "image": "beef-circle.png",
+    "link": "beef-feed.php"
+  },					
+  {
+    "name":"Horse Feed",
+    "image": "horse-circle.png",
+    "link": "horse-feed.php"
+  },					
+  {
+    "name":"Innoculants",
+    "image": "innoculants-circle2.png",
+    "link": "forage-innoculants.php"
+  },					
+  {
+    "name":"Small Ruminants",
+    "image": "ruminants.png",
+    "link": "small-ruminants.php"
+  }
+]
