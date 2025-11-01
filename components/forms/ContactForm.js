@@ -57,7 +57,36 @@ export default function ContactForm() {
         submissionData.recaptchaToken = recaptchaToken
       }
 
-      await addDoc(collection(db, 'contactSubmissions'), submissionData)
+      // Create document in 'contactSubmissions' collection for Firestore Send Email extension
+      // The extension is configured to listen to this collection and send emails automatically
+      await addDoc(collection(db, 'mail'), {
+        to: ['sales@rjdairy.com'],
+        cc: ['info@lotusmarketingsolutions.com'],
+        replyTo: submissionData.email,
+        message: {
+          subject: `New Contact Form Submission from ${submissionData.name}`,
+          text:
+            `
+              You have a new contact form submission:
+
+              Name: ${submissionData.name}
+              Email: ${submissionData.email}
+              Phone: ${submissionData.phone}
+
+              Message: ${submissionData.message}
+            `,
+          html:
+            ` <p>You have a new contact form submission:</p>
+              <ul>
+                <li><strong>Name:</strong> ${submissionData.name}</li>
+                <li><strong>Email:</strong> ${submissionData.email}</li>
+                <li><strong>Phone:</strong> ${submissionData.phone}</li>
+              </ul>
+              <p><strong>Message:</strong></p>
+              <p>${submissionData.message.replace(/\n/g, '<br/>')}</p>
+            `,
+        }
+      })
 
       // Success - reset form
       setSubmitStatus('success')
