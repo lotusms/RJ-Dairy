@@ -32,13 +32,11 @@ export default function Video({
               // Add a small delay to ensure iframe is ready
               setTimeout(() => {
                 if (entry.isIntersecting) {
-                  console.log('Playing YouTube video')
                   // Try to play video using different methods
                   iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*')
                   // Alternative method
                   iframe.contentWindow.postMessage('{"event":"command","func":"play","args":""}', '*')
                 } else {
-                  console.log('Pausing YouTube video')
                   // Try to pause video using different methods
                   iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
                   // Alternative method
@@ -46,13 +44,15 @@ export default function Video({
                 }
               }, 100)
             } catch (error) {
-              console.log('YouTube control error:', error)
+              // Silently handle YouTube control errors
             }
           } else {
             // For HTML5 videos
             const video = entry.target
             if (entry.isIntersecting) {
-              video.play().catch(e => console.log('Video play error:', e))
+              video.play().catch(() => {
+                // Silently handle video play errors
+              })
             } else {
               video.pause()
             }

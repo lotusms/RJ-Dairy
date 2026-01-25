@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import React from 'react'
 
 export default function WeatherWidget({ 
   city = "Lancaster, PA",
@@ -72,21 +73,18 @@ export default function WeatherWidget({
   }
 
   const fetchWeatherData = async (cityName) => {
+    let coords = null
     try {
       setLoading(true)
       setError(null)
 
-      const coords = cityCoordinates[cityName]
+      coords = cityCoordinates[cityName]
       if (!coords) {
         throw new Error('City coordinates not found')
       }
 
-      console.log('Fetching weather for:', cityName, 'at', coords)
-
       // Using Open-Meteo API - completely FREE, no API key required
       const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&forecast_days=7`
-      
-      console.log('API URL:', apiUrl)
 
       const response = await fetch(apiUrl)
 
@@ -95,7 +93,6 @@ export default function WeatherWidget({
       }
 
       const data = await response.json()
-      console.log('API Response:', data)
 
       // Validate response structure
       if (!data.current || !data.daily) {
@@ -122,13 +119,9 @@ export default function WeatherWidget({
         forecast: forecastArray
       }
 
-      console.log('Processed weather data:', weatherData)
-      console.log('Forecast array:', forecastArray)
       setWeatherData(weatherData)
       setLoading(false)
     } catch (err) {
-      console.error('Weather API Error:', err)
-      console.error('City:', cityName, 'Coords:', coords)
       setError(`Weather unavailable: ${err.message}`)
       setLoading(false)
     }
@@ -164,8 +157,17 @@ export default function WeatherWidget({
     return conditionMap[weatherCode] || 'Unknown'
   }
 
+  // Sync selectedCity with city prop when it changes
+  useEffect(() => {
+    if (city !== selectedCity) {
+      setSelectedCity(city)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [city])
+
   useEffect(() => {
     fetchWeatherData(selectedCity)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity])
 
   const handleCityChange = (newCity) => {
@@ -193,6 +195,15 @@ export default function WeatherWidget({
             {error.includes('API key') ? 'Please configure weather API key' : 'Check your internet connection'}
           </div>
         </div>
+      </div>
+    )
+  }
+
+  // Safety check - prevent crash if weatherData is null
+  if (!weatherData || !weatherData.current || !weatherData.forecast) {
+    return (
+      <div className={`bg-blue-900 text-white p-4 rounded ${className}`}>
+        <div className="text-center">Loading weather...</div>
       </div>
     )
   }
@@ -235,16 +246,16 @@ export default function WeatherWidget({
       <div className="flex-1 flex flex-col min-h-0">     
         <div className="flex-1 grid grid-cols-4 gap-2 auto-rows-fr">
           {weatherData.forecast.map((day, index) => (
-            <>
-              <div key={`${index}-day`} className="text-left text-xs md:text-sm font-medium flex items-center">
+            <React.Fragment key={index}>
+              <div className="text-left text-xs md:text-sm font-medium flex items-center">
                 <span className="block md:hidden">{day.day.full}</span>
                 <span className="hidden md:block lg:hidden">{day.day.short}</span>
                 <span className="hidden lg:block">{day.day.full}</span>
               </div>
-              <div key={`${index}-icon`} className="text-center text-base md:text-lg flex items-center justify-center">{day.icon}</div>
-              <div key={`${index}-high`} className="text-center text-xs md:text-sm font-semibold flex items-center justify-center">{day.high}°</div>
-              <div key={`${index}-low`} className="text-center text-xs md:text-sm font-semibold opacity-70 flex items-center justify-center">{day.low}°</div>
-            </>
+              <div className="text-center text-base md:text-lg flex items-center justify-center">{day.icon}</div>
+              <div className="text-center text-xs md:text-sm font-semibold flex items-center justify-center">{day.high}°</div>
+              <div className="text-center text-xs md:text-sm font-semibold opacity-70 flex items-center justify-center">{day.low}°</div>
+            </React.Fragment>
           ))}
         </div>
       </div>
