@@ -1,9 +1,20 @@
 import Head from 'next/head'
 import Script from 'next/script'
+import { useRouter } from 'next/router'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-export default function Layout({ children, title, description }) {
+const SITE_ORIGIN = 'https://www.rjdairy.com'
+
+function canonicalUrl(asPath) {
+  const path = (asPath || '/').split(/[?#]/)[0] || '/'
+  const normalized = path.length > 1 ? path.replace(/\/+$/, '') : '/'
+  return `${SITE_ORIGIN}${normalized.startsWith('/') ? normalized : `/${normalized}`}`
+}
+
+export default function Layout({ children, title, description, noIndex = false, omitCanonical = false }) {
+  const router = useRouter()
+  const pageUrl = canonicalUrl(router.asPath)
   const recaptchaSiteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
 
   return (
@@ -31,15 +42,20 @@ export default function Layout({ children, title, description }) {
         <title>{title || 'R&J Dairy Consulting'}</title>
         <meta name="description" content={description || 'R&J Dairy Consulting - Working alongside of you to help achieve your farm goals!'} />
         
-        {/* Canonical URL */}
-        <link rel="canonical" href="http://www.rjdairy.com/" />
-        
+        {noIndex && <meta name="robots" content="noindex, follow" />}
+
+        {!omitCanonical && (
+          <>
+            <link rel="canonical" href={pageUrl} />
+            <meta property="og:url" content={pageUrl} />
+          </>
+        )}
+
         {/* Open Graph Meta Tags */}
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="http://www.rjdairy.com/assets/img/logo155.png" />
+        <meta property="og:image" content={`${SITE_ORIGIN}/assets/img/logo155.png`} />
         <meta property="og:title" content={title || 'R&J Dairy Consulting'} />
-        <meta property="og:url" content="http://www.rjdairy.com/" />
         <meta property="og:site_name" content="R&J Dairy" />
         <meta property="og:description" content={description || 'R&J Dairy Consulting - Working alongside of you to help achieve your farm goals!'} />
       </Head>

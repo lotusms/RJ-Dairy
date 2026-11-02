@@ -5,6 +5,8 @@ export default function Custom404() {
     <Layout
       title="404 - Page Not Found"
       description="The page you're looking for doesn't exist."
+      noIndex
+      omitCanonical
     >
       <section className="py-16 bg-gray-100 min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-4 text-center">

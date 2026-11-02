@@ -5,6 +5,7 @@ export default function PurchaseLocations() {
     <Layout
       title="Purchase Locations - R&J Dairy Consulting"
       description="Find locations where you can purchase R&J Dairy Consulting products."
+      noIndex
     >
       <section className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
